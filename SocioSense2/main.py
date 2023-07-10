@@ -33,7 +33,7 @@ aiplatform.init(
     credentials=my_credentials,
 )
 
-with open("service_account.json", encoding="utf-8") as f:
+with open("justbepractical-398e3d130d84.json", encoding="utf-8") as f:
     project_json = json.load(f)
     project_id = project_json["project_id"]
 
