@@ -27,14 +27,6 @@ my_credentials = service_account.Credentials.from_service_account_info(service_a
 # Initialize Google AI Platform with project details and credentials
 aiplatform.init(credentials=my_credentials,)
 
-with open("service_account.json", encoding="utf-8") as f:
-    project_json = json.load(f)
-    project_id = project_json["project_id"]
-
-
-# Initialize Vertex AI with project and location
-vertexai.init(project=project_id, location="us-central1")
-
 
 
 def predict_text_sentiment_analysis_sample(
