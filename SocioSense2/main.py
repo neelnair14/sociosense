@@ -1,11 +1,17 @@
 import dotenv
 from dotenv import load_dotenv
 import os
-
+import google.auth
+import vertexai
+import json  # add this line
 import streamlit as st
-
+from google.auth import credentials
+from google.oauth2 import service_account
+import google.cloud.aiplatform as aiplatform
 from google.cloud import aiplatform
-
+from google.cloud.aiplatform.gapic.schema import predict
+from google.protobuf import json_format
+from google.protobuf.struct_pb2 import Value
 
 load_dotenv()
 
