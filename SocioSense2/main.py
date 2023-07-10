@@ -1,7 +1,7 @@
 import dotenv
 from dotenv import load_dotenv
 
-load_dotenv
+
 
 import streamlit as st
 
@@ -10,6 +10,7 @@ from google.cloud.aiplatform.gapic.schema import predict
 from google.protobuf import json_format
 from google.protobuf.struct_pb2 import Value
 
+load_dotenv
 
 def predict_text_sentiment_analysis_sample(
     project: str,
