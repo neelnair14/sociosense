@@ -19,14 +19,10 @@ load_dotenv()
 
 # Load the service account json file
 # Update the values in the json file with your own
-with open("service_account.json") as f:  # replace 'serviceAccount.json' with the path to your file if necessary
-    service_account_info = json.load(f)
+
+service_account_info = json.load("service_account.json")
 
 my_credentials = service_account.Credentials.from_service_account_info(service_account_info)
-
-# Initialize Google AI Platform with project details and credentials
-aiplatform.init(credentials=my_credentials,)
-
 
 
 def predict_text_sentiment_analysis_sample(
