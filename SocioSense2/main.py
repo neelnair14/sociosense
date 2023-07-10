@@ -1,6 +1,5 @@
 
 import streamlit as st
-from dotenv import load_dotenv
 
 from google.cloud import aiplatform
 from google.cloud.aiplatform.gapic.schema import predict
@@ -45,8 +44,6 @@ def predict_text_sentiment_analysis_sample(
 # [END aiplatform_predict_text_sentiment_analysis_sample]
 
 
-load_dotenv()
-
 def generate_prompt( input_text, **kwargs):
     return f"{input_text}"
 
@@ -68,6 +65,8 @@ if "output" not in st.session_state:
     st.session_state["output"] = "--"
 
 st.title("SocioSense")
+st.header("Section 1")
+st.markdown("[Section 1](#section-1)")
 st.subheader("Let us be your PR Team!")
 st.subheader("The higher your text is rated, the more negative it is. The lower it is rated, the more positive :)")
 
