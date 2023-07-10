@@ -19,21 +19,15 @@ load_dotenv()
 
 # Load the service account json file
 # Update the values in the json file with your own
-with open(
-    "justbepractical-398e3d130d84.json"
-) as f:  # replace 'serviceAccount.json' with the path to your file if necessary
+with open("service_account.json") as f:  # replace 'serviceAccount.json' with the path to your file if necessary
     service_account_info = json.load(f)
 
-my_credentials = service_account.Credentials.from_service_account_info(
-    service_account_info
-)
+my_credentials = service_account.Credentials.from_service_account_info(service_account_info)
 
 # Initialize Google AI Platform with project details and credentials
-aiplatform.init(
-    credentials=my_credentials,
-)
+aiplatform.init(credentials=my_credentials,)
 
-with open("justbepractical-398e3d130d84.json", encoding="utf-8") as f:
+with open("service_account.json", encoding="utf-8") as f:
     project_json = json.load(f)
     project_id = project_json["project_id"]
 
