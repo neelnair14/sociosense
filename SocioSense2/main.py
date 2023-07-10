@@ -2,10 +2,12 @@ import dotenv
 from dotenv import load_dotenv
 import os
 import google.auth
-
-
+import vertexai
+import json  # add this line
 import streamlit as st
-
+from google.auth import credentials
+from google.oauth2 import service_account
+import google.cloud.aiplatform as aiplatform
 from google.cloud import aiplatform
 from google.cloud.aiplatform.gapic.schema import predict
 from google.protobuf import json_format
@@ -15,14 +17,29 @@ load_dotenv()
 
 
 
-# Load the JSON key file path
-key_path = "justbepractical-398e3d130d84.json"
+# Load the service account json file
+# Update the values in the json file with your own
+with open(
+    "justbepractical-398e3d130d84.json"
+) as f:  # replace 'serviceAccount.json' with the path to your file if necessary
+    service_account_info = json.load(f)
 
-# Set the environment variable to point to the key file
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = key_path
+my_credentials = service_account.Credentials.from_service_account_info(
+    service_account_info
+)
 
-# Authenticate using the key file
-credentials, project_id = google.auth.default()
+# Initialize Google AI Platform with project details and credentials
+aiplatform.init(
+    credentials=my_credentials,
+)
+
+with open("service_account.json", encoding="utf-8") as f:
+    project_json = json.load(f)
+    project_id = project_json["project_id"]
+
+
+# Initialize Vertex AI with project and location
+vertexai.init(project=project_id, location="us-central1")
 
 
 
