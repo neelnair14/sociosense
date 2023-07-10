@@ -1,6 +1,7 @@
 import dotenv
 from dotenv import load_dotenv
-
+import os
+import google.auth
 
 
 import streamlit as st
@@ -11,6 +12,20 @@ from google.protobuf import json_format
 from google.protobuf.struct_pb2 import Value
 
 load_dotenv()
+
+
+
+# Load the JSON key file path
+key_path = os.path.join("secrets", "justbepractical-398e3d130d84.json")
+
+# Set the environment variable to point to the key file
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = key_path
+
+# Authenticate using the key file
+credentials, project_id = google.auth.default()
+
+
+
 
 def predict_text_sentiment_analysis_sample(
     project: str,
