@@ -16,14 +16,13 @@ load_dotenv()
 
 
 # Load the JSON key file path
-key_path = os.path.join("secrets", "justbepractical-398e3d130d84.json")
+key_path = "justbepractical-398e3d130d84.json"
 
 # Set the environment variable to point to the key file
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = key_path
 
 # Authenticate using the key file
 credentials, project_id = google.auth.default()
-
 
 
 
