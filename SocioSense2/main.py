@@ -1,29 +1,13 @@
 import dotenv
 from dotenv import load_dotenv
 import os
-import google.auth
-import vertexai
-import json  # add this line
+
 import streamlit as st
-from google.auth import credentials
-from google.oauth2 import service_account
-import google.cloud.aiplatform as aiplatform
+
 from google.cloud import aiplatform
-from google.cloud.aiplatform.gapic.schema import predict
-from google.protobuf import json_format
-from google.protobuf.struct_pb2 import Value
+
 
 load_dotenv()
-
-
-
-# Load the service account json file
-# Update the values in the json file with your own
-
-service_account_info = json.load("service_account.json")
-
-my_credentials = service_account.Credentials.from_service_account_info(service_account_info)
-
 
 def predict_text_sentiment_analysis_sample(
     project: str,
